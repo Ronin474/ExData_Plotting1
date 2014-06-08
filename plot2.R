@@ -23,14 +23,14 @@ rm(filePath)
 rm(tempDir)
 rm(tempFile)
 
-# appending variable DateTime necessary for correct graph implementations to consumptionData
+# appending variable DateTime necessary for correct plot implementations to consumptionData
 consumptionData$DateTime <- strptime(paste(consumptionData$Date, consumptionData$Time), format = "%d/%m/%Y %H:%M:%S")
 
 # plot2 - opening png graphics device, setting up the plot, and closing the png graphics device
 # overriding OS locale settings in R by temporary setting them to "C" (North_American usage) 
 lcTime <- Sys.getlocale("LC_TIME")
 Sys.setlocale("LC_TIME", "C")
-# default values for png(): width = 480, height = 480, units = "px"
+# default values for png(): width = 480, height = 480, units = "px", bg = "white"
 png(filename = "plot2.png")
 with(consumptionData, {
     plot(DateTime, Global_active_power, type = "n", ylab = "Global Active Power (kilowatts)", xlab = "")

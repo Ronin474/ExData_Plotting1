@@ -23,16 +23,16 @@ rm(filePath)
 rm(tempDir)
 rm(tempFile)
 
-# appending variable DateTime necessary for correct graph implementations to consumptionData
+# appending variable DateTime necessary for correct plot implementations to consumptionData
 consumptionData$DateTime <- strptime(paste(consumptionData$Date, consumptionData$Time), format = "%d/%m/%Y %H:%M:%S")
 
 # plot4 - opening png graphics device, setting up the plot, and closing the png graphics device
 # overriding OS locale settings in R by temporary setting them to "C" (North_American usage) 
 lcTime <- Sys.getlocale("LC_TIME")
 Sys.setlocale("LC_TIME", "C")
-# default values for png(): width = 480, height = 480, units = "px"
+# default values for png(): width = 480, height = 480, units = "px", bg = "white"
 png(filename = "plot4.png")
-# saving current state of graphical parameters saved in par(); adjusting mfrow for mulitple graphs (row-wise fill)
+# saving current state of graphical parameters saved in par(); adjusting mfrow for mulitple plots (row-wise fill)
 opar <- par()
 par(mfrow = c(2, 2))
 # mini plot 1 (upper-left)

@@ -23,11 +23,11 @@ rm(filePath)
 rm(tempDir)
 rm(tempFile)
 
-# appending variable DateTime necessary for correct graph implementations to consumptionData
+# appending variable DateTime necessary for correct plot implementations to consumptionData
 consumptionData$DateTime <- strptime(paste(consumptionData$Date, consumptionData$Time), format = "%d/%m/%Y %H:%M:%S")
 
 # plot1 - opening png graphics device, setting up the plot, and closing the png graphics device
-# default values for png(): width = 480, height = 480, units = "px"
+# default values for png(): width = 480, height = 480, units = "px", bg = "white"
 png(filename = "plot1.png")
 with(consumptionData, {
     hist(Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power")
